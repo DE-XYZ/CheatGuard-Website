@@ -1,0 +1,278 @@
+/* Adding to your dashboard.css file - Download page specific styles */
+
+/* Download Section Styles */
+.download-section {
+    margin-bottom: 30px;
+}
+
+.download-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.software-details {
+    flex: 1;
+    min-width: 300px;
+}
+
+.software-details h4 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.version-info {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.feature-list {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.feature-list li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.feature-list li i {
+    color: var(--success-color);
+    margin-right: 10px;
+}
+
+.system-requirements {
+    background-color: var(--darker-bg);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    margin-top: 20px;
+}
+
+.system-requirements h5 {
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.download-action {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: var(--light-bg);
+    border-radius: var(--border-radius);
+    text-align: center;
+    border: 1px solid rgba(0, 119, 255, 0.2);
+}
+
+.download-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    box-shadow: var(--glow-effect);
+}
+
+.download-icon i {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.download-btn {
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 250px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.file-info {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+.download-count {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.download-instructions {
+    background-color: var(--medium-bg);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+}
+
+.download-instructions h4 {
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.download-instructions ol {
+    padding-left: 20px;
+}
+
+.download-instructions ol li {
+    margin-bottom: 10px;
+}
+
+.download-instructions a {
+    color: var(--primary-color);
+    text-decoration: underline;
+    transition: color var(--transition-speed);
+}
+
+.download-instructions a:hover {
+    color: var(--accent-color);
+}
+
+.download-notes {
+    margin-top: 20px;
+}
+
+.note-box {
+    display: flex;
+    background-color: rgba(255, 170, 0, 0.1);
+    border-left: 4px solid var(--warning-color);
+    padding: 15px;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.note-icon {
+    margin-right: 15px;
+    color: var(--warning-color);
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.note-content h5 {
+    margin-bottom: 5px;
+    color: var(--warning-color);
+}
+
+.versions-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.versions-table th,
+.versions-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.versions-table th {
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.changelog-btn {
+    background-color: var(--dark-bg);
+    border: none;
+    color: var(--text-secondary);
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all var(--transition-speed);
+}
+
+.changelog-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.changelog-content {
+    display: none;
+    background-color: var(--darker-bg);
+    padding: 10px;
+    border-radius: var(--border-radius);
+    margin-top: 10px;
+}
+
+.changelog-content ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.version-download-btn {
+    background-color: var(--dark-bg);
+    color: var(--text-secondary);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-speed);
+}
+
+.version-download-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* FAQ Section Styles */
+.faq-item {
+    margin-bottom: 10px;
+    border: 1px solid rgba(0, 119, 255, 0.1);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: 15px;
+    background-color: var(--light-bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background var(--transition-speed);
+}
+
+.faq-question:hover {
+    background-color: var(--medium-bg);
+}
+
+.faq-question h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.faq-answer {
+    display: none;
+    padding: 15px;
+    background-color: var(--medium-bg);
+    border-top: 1px solid rgba(0, 119, 255, 0.1);
+}
+
+/* Responsive styles for download page */
+@media (max-width: 768px) {
+    .download-info {
+        flex-direction: column;
+    }
+    
+    .software-details, .download-action {
+        width: 100%;
+    }
+}

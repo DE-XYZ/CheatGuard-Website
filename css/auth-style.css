@@ -1,0 +1,211 @@
+/* css/auth-style.css */
+
+/* Import base styles */
+@import url('style.css');
+
+/* Auth specific styles */
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 0 50px;
+    background: linear-gradient(to bottom, var(--dark-bg), var(--darker-bg));
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    background-color: var(--medium-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 
+                0 0 0 1px rgba(0, 170, 255, 0.2),
+                0 0 30px rgba(0, 170, 255, 0.2);
+    position: relative;
+}
+
+.auth-card::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(45deg, transparent, rgba(0, 170, 255, 0.1), transparent);
+    z-index: -1;
+    border-radius: var(--border-radius);
+}
+
+.auth-header {
+    background-color: var(--darker-bg);
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 170, 255, 0.2);
+}
+
+.auth-header h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.auth-header .logo-text {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.auth-content {
+    padding: 30px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.form-input {
+    padding: 12px 15px;
+    border-radius: var(--border-radius);
+    background-color: var(--light-bg);
+    border: 1px solid rgba(0, 170, 255, 0.2);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    transition: all var(--transition-speed);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 119, 255, 0.2);
+}
+
+.form-input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+.auth-btn {
+    margin-top: 10px;
+    padding: 14px;
+    font-weight: 600;
+}
+
+.auth-footer {
+    margin-top: 25px;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.auth-footer a {
+    color: var(--primary-color);
+    font-weight: 500;
+    transition: color var(--transition-speed);
+}
+
+.auth-footer a:hover {
+    color: var(--accent-color);
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+    color: var(--text-secondary);
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid rgba(160, 176, 197, 0.3);
+}
+
+.divider::before {
+    margin-right: 10px;
+}
+
+.divider::after {
+    margin-left: 10px;
+}
+
+.oauth-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.oauth-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: var(--border-radius);
+    background-color: var(--light-bg);
+    border: 1px solid rgba(0, 170, 255, 0.2);
+    color: var(--text-color);
+    font-size: 1.4rem;
+    transition: all var(--transition-speed);
+}
+
+.oauth-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.oauth-btn i {
+    transition: color var(--transition-speed);
+}
+
+.oauth-btn:hover i {
+    color: var(--accent-color);
+}
+
+.error-message {
+    background-color: rgba(255, 68, 68, 0.1);
+    border-left: 3px solid var(--danger-color);
+    padding: 10px 15px;
+    color: var(--danger-color);
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.success-message {
+    background-color: rgba(0, 255, 136, 0.1);
+    border-left: 3px solid var(--success-color);
+    padding: 10px 15px;
+    color: var(--success-color);
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* Forgot password link */
+.forgot-password {
+    text-align: right;
+    margin-top: -15px;
+    font-size: 0.85rem;
+}
+
+.forgot-password a {
+    color: var(--text-secondary);
+}
+
+.forgot-password a:hover {
+    color: var(--primary-color);
+}

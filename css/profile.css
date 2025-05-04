@@ -1,0 +1,425 @@
+/* Profile page styles */
+
+/* Profile layout */
+.profile-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+/* Message box for notifications */
+.message-box {
+    margin-bottom: 25px;
+    padding: 15px 20px;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    border-left: 4px solid;
+}
+
+.message-box.success {
+    background-color: rgba(46, 213, 115, 0.1);
+    border-left-color: #2ed573;
+}
+
+.message-box.error {
+    background-color: rgba(255, 59, 59, 0.1);
+    border-left-color: #ff3b3b;
+}
+
+.message-box i {
+    margin-right: 12px;
+    font-size: 1.2rem;
+}
+
+.message-box.success i {
+    color: #2ed573;
+}
+
+.message-box.error i {
+    color: #ff3b3b;
+}
+
+/* Profile summary section */
+.profile-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.avatar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.avatar-preview {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 5px 15px rgba(0, 170, 255, 0.2);
+}
+
+.avatar-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.upload-avatar-btn {
+    padding: 8px 15px;
+    font-size: 0.85rem;
+}
+
+.profile-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: rgba(0, 170, 255, 0.05);
+    border-radius: var(--border-radius);
+    transition: all var(--transition-speed);
+}
+
+.stat-item:hover {
+    background-color: rgba(0, 170, 255, 0.1);
+}
+
+.stat-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: rgba(0, 170, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+}
+
+.stat-info h4 {
+    margin: 0 0 5px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.stat-info p {
+    margin: 0;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.account-status {
+    font-weight: 600;
+}
+
+.account-status.premium {
+    color: #ffd700;
+}
+
+/* Edit profile form */
+.form-section {
+    margin-bottom: 25px;
+}
+
+.form-section h4 {
+    font-size: 1.1rem;
+    margin: 0 0 15px;
+    color: var(--text-color);
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(0, 170, 255, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: var(--border-radius);
+    background-color: var(--darker-bg);
+    border: 1px solid rgba(0, 170, 255, 0.2);
+    color: var(--text-color);
+    transition: all var(--transition-speed);
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 170, 255, 0.1);
+    outline: none;
+}
+
+.form-group input:disabled {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 170, 255, 0.1);
+    cursor: not-allowed;
+}
+
+.form-hint {
+    margin-top: 5px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Toggle switches */
+.toggle-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    background-color: rgba(0, 170, 255, 0.05);
+    border-radius: var(--border-radius);
+    transition: all var(--transition-speed);
+}
+
+.toggle-group:hover {
+    background-color: rgba(0, 170, 255, 0.08);
+}
+
+.toggle-group label {
+    font-weight: 500;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all var(--transition-speed);
+    border-radius: 24px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: all var(--transition-speed);
+    border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+    background-color: var(--primary-color);
+}
+
+input:checked + .toggle-slider:before {
+    transform: translateX(26px);
+}
+
+/* Form actions */
+.form-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Danger zone */
+.card-header.danger {
+    background-color: rgba(255, 59, 59, 0.1);
+    border-bottom: 1px solid rgba(255, 59, 59, 0.2);
+}
+
+.card-header.danger h3 {
+    color: var(--danger-color);
+}
+
+.warning-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+}
+
+.warning-box.severe {
+    background-color: rgba(255, 59, 59, 0.1);
+    border-left: 4px solid var(--danger-color);
+}
+
+.warning-box i {
+    font-size: 1.5rem;
+    color: var(--danger-color);
+}
+
+.warning-box h4 {
+    margin: 0 0 5px;
+    color: var(--danger-color);
+}
+
+.warning-box p {
+    margin: 0;
+    color: var(--text-secondary);
+}
+
+.delete-account-action {
+    display: flex;
+    justify-content: center;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: var(--darker-bg);
+    margin: auto;
+    border-radius: var(--border-radius);
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 170, 255, 0.2);
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 170, 255, 0.1);
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color var(--transition-speed);
+}
+
+.close-modal:hover {
+    color: var(--danger-color);
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.confirmation-input {
+    margin-top: 20px;
+}
+
+.confirmation-input label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.confirmation-input input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: var(--border-radius);
+    background-color: var(--dark-bg);
+    border: 1px solid rgba(255, 59, 59, 0.3);
+    color: var(--text-color);
+    transition: all var(--transition-speed);
+}
+
+.confirmation-input input:focus {
+    border-color: var(--danger-color);
+    box-shadow: 0 0 0 3px rgba(255, 59, 59, 0.2);
+    outline: none;
+}
+
+.modal-footer {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
+    border-top: 1px solid rgba(0, 170, 255, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .profile-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .form-actions button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
