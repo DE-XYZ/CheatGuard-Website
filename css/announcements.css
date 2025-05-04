@@ -1,0 +1,429 @@
+/* Announcements Styles */
+:root {
+    --transition-speed: 0.3s ease;
+}
+
+/* Announcement cards on dashboard */
+.announcements-section {
+    margin-bottom: 25px;
+}
+
+.announcement-card {
+    background-color: var(--medium-bg);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(0, 170, 255, 0.1);
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    position: relative;
+    overflow: hidden;
+}
+
+.announcement-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.announcement-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+}
+
+.announcement-card h3 {
+    color: var(--primary-color);
+    margin: 0 0 10px;
+    font-size: 1.2rem;
+    padding-left: 10px;
+}
+
+.announcement-meta {
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+    padding-left: 10px;
+}
+
+.announcement-meta > * {
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.announcement-meta i {
+    margin-right: 5px;
+    font-size: 0.9rem;
+}
+
+.announcement-excerpt {
+    color: var(--text-color);
+    line-height: 1.5;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.announcement-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.read-more-btn {
+    display: inline-flex;
+    align-items: center;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color var(--transition-speed);
+}
+
+.read-more-btn:hover {
+    color: var(--accent-color);
+}
+
+.read-more-btn i {
+    margin-left: 5px;
+    font-size: 0.8rem;
+    transition: transform var(--transition-speed);
+}
+
+.read-more-btn:hover i {
+    transform: translateX(3px);
+}
+
+/* Status tags */
+.status-tag {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-tag.active {
+    background-color: rgba(0, 200, 83, 0.15);
+    color: #00c853;
+}
+
+.status-tag.inactive,
+.status-tag.archived {
+    background-color: rgba(255, 82, 82, 0.15);
+    color: #ff5252;
+}
+
+/* Admin Announcements Table */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    background-color: rgba(0, 170, 255, 0.05);
+    padding: 12px 15px;
+    text-align: left;
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-bottom: 1px solid rgba(0, 170, 255, 0.1);
+}
+
+.admin-table td {
+    padding: 15px;
+    vertical-align: top;
+    border-bottom: 1px solid rgba(160, 176, 197, 0.1);
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-table tr {
+    transition: background-color var(--transition-speed);
+}
+
+.admin-table tr:hover {
+    background-color: rgba(0, 170, 255, 0.03);
+}
+
+.announcement-content {
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+/* Aktualisierte Aktions-Buttons mit besserer Lesbarkeit */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    width: auto;       /* Von fixer Breite zu automatischer Breite geändert */
+    min-width: 32px;   /* Mindestbreite hinzugefügt */
+    height: 32px;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;  /* Fettere Schrift für bessere Lesbarkeit */
+    padding: 0 10px;   /* Seitenabstand hinzugefügt für Text */
+    transition: all var(--transition-speed);
+}
+
+/* Info Button bleibt unverändert */
+.info-btn {
+    background-color: rgba(3, 169, 244, 0.15);
+    color: #03a9f4;
+}
+
+.info-btn:hover {
+    background-color: rgba(3, 169, 244, 0.25);
+}
+
+/* Archiv/Warnung Button mit verbessertem Kontrast */
+.warning-btn {
+    background-color: rgba(255, 152, 0, 0.25);   /* Dunklerer Hintergrund */
+    color: #8B5000;                              /* Dunklere Textfarbe für besseren Kontrast */
+    border: 1px solid #ff9800;                   /* Rand hinzugefügt für Definition */
+}
+
+.warning-btn:hover {
+    background-color: rgba(255, 152, 0, 0.35);
+}
+
+/* Löschen/Gefahr Button mit verbessertem Kontrast */
+.danger-btn {
+    background-color: rgba(244, 67, 54, 0.25);   /* Dunklerer Hintergrund */
+    color: #9B0000;                              /* Dunklere Textfarbe für besseren Kontrast */
+    border: 1px solid #f44336;                   /* Rand hinzugefügt für Definition */
+}
+
+.danger-btn:hover {
+    background-color: rgba(244, 67, 54, 0.35);
+}
+
+/* Form for creating/editing announcements */
+.announcement-editor {
+    margin-bottom: 20px;
+}
+
+.announcement-editor .form-group {
+    margin-bottom: 20px;
+}
+
+.announcement-editor label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.announcement-editor .form-control {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: var(--darker-bg);
+    border: 1px solid rgba(0, 170, 255, 0.2);
+    border-radius: var(--border-radius);
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: border-color var(--transition-speed);
+}
+
+.announcement-editor .form-control:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.announcement-editor textarea {
+    min-height: 200px;
+    resize: vertical;
+    font-family: inherit;
+    line-height: 1.6;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Announcement details page */
+.announcement-detail {
+    padding: 20px;
+}
+
+.announcement-header {
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(0, 170, 255, 0.1);
+    padding-bottom: 20px;
+}
+
+.announcement-title {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+}
+
+.announcement-meta-detail {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+.announcement-meta-detail > * {
+    margin-right: 20px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.announcement-meta-detail i {
+    margin-right: 8px;
+    opacity: 0.8;
+}
+
+.announcement-content-detail {
+    line-height: 1.8;
+    color: var(--text-color);
+    font-size: 1.05rem;
+    white-space: pre-line;
+}
+
+.status-indicator {
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-active {
+    background-color: rgba(0, 200, 83, 0.15);
+    color: #00c853;
+}
+
+.status-archived {
+    background-color: rgba(255, 82, 82, 0.15);
+    color: #ff5252;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .admin-table {
+        min-width: 800px;
+    }
+    
+    .announcement-meta-detail {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .announcement-meta-detail > * {
+        margin-bottom: 10px;
+    }
+}
+
+/* Alerts */
+.alert {
+    padding: 15px 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.alert i {
+    margin-right: 15px;
+    font-size: 1.2rem;
+}
+
+.alert.success {
+    background-color: rgba(0, 200, 83, 0.1);
+    color: #00c853;
+    border-left: 4px solid #00c853;
+}
+
+.alert.error {
+    background-color: rgba(244, 67, 54, 0.1);
+    color: #f44336;
+    border-left: 4px solid #f44336;
+}
+
+.alert.warning {
+    background-color: rgba(255, 152, 0, 0.1);
+    color: #ff9800;
+    border-left: 4px solid #ff9800;
+}
+
+.alert.info {
+    background-color: rgba(3, 169, 244, 0.1);
+    color: #03a9f4;
+    border-left: 4px solid #03a9f4;
+}
+
+/* Inline forms */
+.inline-form {
+    display: inline-block;
+}
+
+/* Text utilities */
+.text-center {
+    text-align: center;
+}
+
+/* Button utilities */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    border: none;
+}
+
+.btn i {
+    margin-right: 8px;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: var(--darkest-bg);
+}
+
+.primary-btn:hover {
+    background-color: var(--accent-color);
+}
+
+.secondary-btn {
+    background-color: rgba(160, 176, 197, 0.15);
+    color: var(--text-color);
+}
+
+.secondary-btn:hover {
+    background-color: rgba(160, 176, 197, 0.25);
+}

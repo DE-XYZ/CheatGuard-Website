@@ -131,6 +131,7 @@ if (isset($_GET['edit']) && is_numeric($_GET['edit'])) {
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/announcements.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="js/admin.js" defer></script>
     <style>

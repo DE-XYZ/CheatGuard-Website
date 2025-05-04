@@ -471,50 +471,6 @@ $securityEvents = getRecentSecurityEvents();
                         </div>
                     </section>
                 </div>
-                
-                <!-- System Health Section -->
-                <section class="content-card">
-                    <div class="card-header">
-                        <h3><i class="fas fa-heartbeat"></i> System Status</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="system-stats">
-                            <div class="system-stat-item">
-                                <div class="stat-label">PHP Version</div>
-                                <div class="stat-value"><?php echo phpversion(); ?></div>
-                            </div>
-                            <div class="system-stat-item">
-                                <div class="stat-label">Server</div>
-                                <div class="stat-value"><?php echo $_SERVER['SERVER_SOFTWARE']; ?></div>
-                            </div>
-                            <div class="system-stat-item">
-                                <div class="stat-label">Database</div>
-                                <div class="stat-value">MySQL <?php 
-                                    $conn = getDbConnection();
-                                    $version = $conn->query("SELECT VERSION() as ver")->fetch_assoc();
-                                    echo $version['ver'];
-                                    $conn->close();
-                                ?></div>
-                            </div>
-                            <div class="system-stat-item">
-                                <div class="stat-label">Serverzeit</div>
-                                <div class="stat-value"><?php echo date('d.m.Y H:i:s'); ?></div>
-                            </div>
-                        </div>
-                        
-                        <div class="admin-actions">
-                            <a href="admin_backup.php" class="btn primary-btn">
-                                <i class="fas fa-database"></i> Datenbank Backup
-                            </a>
-                            <a href="admin_settings.php" class="btn secondary-btn">
-                                <i class="fas fa-cogs"></i> System Einstellungen
-                            </a>
-                            <a href="#" class="btn warning-btn" id="clear-cache-btn">
-                                <i class="fas fa-trash"></i> Cache leeren
-                            </a>
-                        </div>
-                    </div>
-                </section>
             </div>
         </main>
     </div>
