@@ -4,3 +4,4 @@ Mitteilungen richtig machen, also diese Glocke
 Admin Page anpassen
 
 Nutzungsbedingungen bearbeiten
+Style von der navbar ändern (Administration)
