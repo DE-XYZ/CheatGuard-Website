@@ -5,6 +5,7 @@ session_start();
 // Include database configuration
 require_once 'php/config.php';
 require_once 'php/auth.php';
+require_once 'php/announcements.php'; // Hier die announcements.php einbinden
 
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
@@ -61,6 +62,9 @@ function getUserStats($userId) {
 
 // Get user stats
 $userStats = getUserStats($_SESSION['user_id']);
+
+// Aktive Ankündigungen holen
+$announcements = getActiveAnnouncements(3); // Hole maximal 3 aktive Ankündigungen
 ?>
 
 <!DOCTYPE html>
@@ -132,6 +136,12 @@ $userStats = getUserStats($_SESSION['user_id']);
                         <a href="admin.php" class="nav-link">
                             <i class="fas fa-shield-alt"></i>
                             <span>Admin Panel</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin_announcements.php" class="nav-link">
+                            <i class="fas fa-bullhorn"></i>
+                            <span>Ankündigungen</span>
                         </a>
                     </li>
                     <?php endif; ?>
@@ -245,23 +255,32 @@ $userStats = getUserStats($_SESSION['user_id']);
                     <section class="announcements-section content-card">
                         <div class="card-header">
                             <h3><i class="fas fa-bullhorn"></i> Ankündigungen</h3>
+                            <?php if (isAdmin()): ?>
+                            <a href="admin_announcements.php" class="view-all">Verwalten</a>
+                            <?php endif; ?>
                         </div>
                         <div class="card-body">
-                            <div class="announcement">
-                                <h4>CheatGuard 2.5 veröffentlicht!</h4>
-                                <p class="announcement-meta">vom Team • April 20, 2025</p>
-                                <p>Die neue Version unserer Software enthält verbesserte Erkennung für FiveM und AltV Cheats sowie eine komplett überarbeitete Benutzeroberfläche.</p>
-                                <a href="#" class="read-more">Mehr lesen</a>
-                            </div>
-                            
-                            <div class="divider"></div>
-                            
-                            <div class="announcement">
-                                <h4>Neue Cheat-Signaturen hinzugefügt</h4>
-                                <p class="announcement-meta">vom Team • April 15, 2025</p>
-                                <p>Wir haben unsere Datenbank mit über 200 neuen Cheat-Signaturen aktualisiert. Führe jetzt einen Scan durch, um die neuesten Bedrohungen zu erkennen.</p>
-                                <a href="#" class="read-more">Mehr lesen</a>
-                            </div>
+                            <?php if (count($announcements) > 0): ?>
+                                <?php foreach ($announcements as $index => $announcement): ?>
+                                    <div class="announcement">
+                                        <h4><?php echo htmlspecialchars($announcement['title']); ?></h4>
+                                        <p class="announcement-meta">von <?php echo htmlspecialchars($announcement['author']); ?> • <?php echo date('d. M Y', strtotime($announcement['created_at'])); ?></p>
+                                        <?php 
+                                            // Zeigt die ersten 150 Zeichen des Inhalts an
+                                            $content = $announcement['content'];
+                                            $shortContent = strlen($content) > 150 ? substr($content, 0, 150) . '...' : $content;
+                                            echo '<p>' . htmlspecialchars($shortContent) . '</p>';
+                                        ?>
+                                        <a href="announcement_details.php?id=<?php echo $announcement['id']; ?>" class="read-more">Mehr lesen</a>
+                                    </div>
+                                    
+                                    <?php if ($index < count($announcements) - 1): ?>
+                                        <div class="divider"></div>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <p class="no-items-message">Keine Ankündigungen vorhanden.</p>
+                            <?php endif; ?>
                         </div>
                     </section>
                     

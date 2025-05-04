@@ -1,4 +1,3 @@
-Pins werden nicht deaktiviert
 Foto ändern mit imgur machen
 Konto Status hinzufügen
 Ankündigung als Admin schreiben können.

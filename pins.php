@@ -5,6 +5,7 @@ session_start();
 // Include database configuration
 require_once 'php/config.php';
 require_once 'php/auth.php';
+require_once 'php/db_functions.php'; // Make sure this includes the new updateExpiredPins function
 
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
@@ -84,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['generate_pin'])) {
             
             // Save the PIN to the database
             $stmt = $conn->prepare("INSERT INTO pins (user_id, pin_code, scan_types, created_at, expires_at, status) 
-                                    VALUES (?, ?, ?, NOW(), DATE_ADD(NOW(), INTERVAL 24 HOUR), 'active')");
+                                   VALUES (?, ?, ?, NOW(), DATE_ADD(NOW(), INTERVAL 24 HOUR), 'active')");
             $stmt->bind_param("iss", $_SESSION['user_id'], $new_pin, $scan_types_json);
             
             if ($stmt->execute()) {
@@ -101,6 +102,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['generate_pin'])) {
     $conn->close();
 }
 
+// Update expired pins for this user
+updateExpiredPins($_SESSION['user_id']);
+
 // Get user's active PINs
 $active_pins = [];
 $conn = getDbConnection();
@@ -114,6 +118,22 @@ while ($row = $result->fetch_assoc()) {
     // Decode scan types from JSON
     $row['scan_types_array'] = json_decode($row['scan_types'], true);
     $active_pins[] = $row;
+}
+
+$stmt->close();
+
+// Get user's expired PINs
+$expired_pins = [];
+$stmt = $conn->prepare("SELECT id, pin_code, scan_types, created_at, expires_at, status FROM pins 
+                      WHERE user_id = ? AND status = 'expired' ORDER BY expires_at DESC LIMIT 10");
+$stmt->bind_param("i", $_SESSION['user_id']);
+$stmt->execute();
+$result = $stmt->get_result();
+
+while ($row = $result->fetch_assoc()) {
+    // Decode scan types from JSON
+    $row['scan_types_array'] = json_decode($row['scan_types'], true);
+    $expired_pins[] = $row;
 }
 
 $stmt->close();
@@ -410,6 +430,63 @@ $conn->close();
                                                         <button class="action-btn share-btn" data-pin="<?php echo $pin['pin_code']; ?>" title="PIN teilen">
                                                             <i class="fas fa-share-alt"></i>
                                                         </button>
+                                                        <form method="post" action="pins.php" class="delete-form" style="display: inline;">
+                                                            <input type="hidden" name="pin_id" value="<?php echo $pin['id']; ?>">
+                                                            <button type="submit" name="delete_pin" class="action-btn delete-btn" 
+                                                                    onclick="return confirm('Bist du sicher, dass du diesen PIN löschen möchtest?');" title="PIN löschen">
+                                                                <i class="fas fa-trash"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Expired PINs Section -->
+                <section class="content-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-history"></i> Abgelaufene PINs</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="pins-table">
+                                <thead>
+                                    <tr>
+                                        <th>PIN-Code</th>
+                                        <th>Scan-Typen</th>
+                                        <th>Erstellt am</th>
+                                        <th>Abgelaufen am</th>
+                                        <th>Status</th>
+                                        <th>Aktionen</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php if (empty($expired_pins)): ?>
+                                        <tr>
+                                            <td colspan="6" class="no-pins">Keine abgelaufenen PINs vorhanden.</td>
+                                        </tr>
+                                    <?php else: ?>
+                                        <?php foreach ($expired_pins as $pin): ?>
+                                            <tr>
+                                                <td><span class="pin-code"><?php echo $pin['pin_code']; ?></span></td>
+                                                <td>
+                                                    <div class="scan-types-display">
+                                                        <?php foreach ($pin['scan_types_array'] as $type): ?>
+                                                            <span class="scan-type-tag"><?php echo ucfirst($type); ?></span>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                </td>
+                                                <td><?php echo date('d.m.Y H:i', strtotime($pin['created_at'])); ?></td>
+                                                <td><?php echo date('d.m.Y H:i', strtotime($pin['expires_at'])); ?></td>
+                                                <td><span class="status-tag expired">Abgelaufen</span></td>
+                                                <td>
+                                                    <div class="action-buttons">
                                                         <form method="post" action="pins.php" class="delete-form" style="display: inline;">
                                                             <input type="hidden" name="pin_id" value="<?php echo $pin['id']; ?>">
                                                             <button type="submit" name="delete_pin" class="action-btn delete-btn" 

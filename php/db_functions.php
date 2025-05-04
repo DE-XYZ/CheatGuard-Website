@@ -74,6 +74,22 @@ function createTables() {
         error_log("Error creating security_log table: " . $conn->error);
     }
 
+    // Ankündigungstabelle erstellen
+    $announcementsTable = "CREATE TABLE IF NOT EXISTS announcements (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        title VARCHAR(255) NOT NULL,
+        content TEXT NOT NULL,
+        author_id INT NOT NULL,
+        created_at DATETIME NOT NULL,
+        updated_at DATETIME NULL,
+        status ENUM('active', 'archived') NOT NULL DEFAULT 'active',
+        FOREIGN KEY (author_id) REFERENCES users(id) ON DELETE CASCADE
+    )";
+        
+    if (!$conn->query($announcementsTable)) {
+        die("Error creating announcements table: " . $conn->error);
+    }
+
     // Create pins table
     $pinsTable = "CREATE TABLE IF NOT EXISTS pins (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -154,6 +170,31 @@ function initDatabase() {
     
     // Now create tables
     createTables();
+}
+
+function updateExpiredPins($user_id = null) {
+    $conn = getDbConnection();
+    
+    // Base query to update expired pins
+    $sql = "UPDATE pins 
+            SET status = 'expired' 
+            WHERE status = 'active' 
+            AND expires_at < NOW()";
+    
+    // If user_id is provided, limit to that user's pins
+    if ($user_id !== null) {
+        $stmt = $conn->prepare($sql . " AND user_id = ?");
+        $stmt->bind_param("i", $user_id);
+    } else {
+        $stmt = $conn->prepare($sql);
+    }
+    
+    $stmt->execute();
+    $updated_count = $stmt->affected_rows;
+    $stmt->close();
+    $conn->close();
+    
+    return $updated_count;
 }
 
 // Initialize database and tables

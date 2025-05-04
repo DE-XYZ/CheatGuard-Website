@@ -204,6 +204,12 @@ $securityEvents = getRecentSecurityEvents();
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="admin_announcements.php" class="nav-link">
+                            <i class="fas fa-bullhorn"></i>
+                            <span>Ankündigungen</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="admin_users.php" class="nav-link">
                             <i class="fas fa-users-cog"></i>
                             <span>Benutzerverwaltung</span>

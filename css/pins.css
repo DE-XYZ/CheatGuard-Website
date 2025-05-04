@@ -383,6 +383,69 @@
     animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) 1;
 }
 
+/* Add these CSS styles to the <style> section in pins.php */
+.status-tag {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.status-tag.active {
+    background-color: rgba(var(--success-rgb), 0.1);
+    color: var(--success-color);
+}
+
+.status-tag.expired {
+    background-color: rgba(var(--warning-rgb), 0.1);
+    color: var(--warning-color);
+}
+
+.status-tag.used {
+    background-color: rgba(var(--info-rgb), 0.1);
+    color: var(--info-color);
+}
+
+/* Style for expired pins table rows */
+.pins-table tbody tr.expired {
+    opacity: 0.7;
+}
+
+/* Tab navigation for different PIN status sections */
+.pin-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1rem;
+}
+
+.pin-tab {
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.pin-tab:hover {
+    color: var(--primary-color);
+}
+
+.pin-tab.active {
+    border-bottom-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* Add variables for colors if they don't exist yet */
+:root {
+    --warning-color: #f0ad4e;
+    --warning-rgb: 240, 173, 78;
+    --info-color: #5bc0de;
+    --info-rgb: 91, 192, 222;
+    --success-color: #5cb85c;
+    --success-rgb: 92, 184, 92;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .form-info {
